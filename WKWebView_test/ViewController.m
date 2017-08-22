@@ -33,7 +33,9 @@
     navView.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:navView];
     
-    NSString * htmlStr = [NSString stringWithFormat:@"%@",@"<button onclick=\"window.webkit.messageHandlers.close.postMessage('alert')\">Copy 点击出现弹框</button>"];
+    //需要webview加载的html字段： button点击事件中close为ios与h5约定的方法名；alert为h5传递给ios的参数。
+    // window.webkit.messageHandlers.方法名.postMessage('参数') 为使用WKWebView在h5中调用ios方法的固定写法。
+    NSString * htmlStr = [NSString stringWithFormat:@"%@",@"<button onclick=\"window.webkit.messageHandlers.close.postMessage('alert')\">点击出现弹框</button>"];
                           
     //WKWebView创建
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
